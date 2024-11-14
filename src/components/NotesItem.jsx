@@ -1,9 +1,9 @@
 import React from "react";
 import NotesItemBody from "./NotesItemBody";
 import { showFormattedDate } from "../utils";
-import ActionNotes from "./ActionNotes";
+import ActionNotes from "./button/ActionNotes";
 
-function NotesItem({ id, title, body, createdAt, archived, onDelete }) {
+function NotesItem({ id, title, body, createdAt, onDelete, onArchived, isArchived }) {
   return (
     <>
       <div className="note-item">
@@ -13,7 +13,7 @@ function NotesItem({ id, title, body, createdAt, archived, onDelete }) {
           createdAt={showFormattedDate(createdAt)}
           body={body}
         />
-        <ActionNotes id={id} onDelete={onDelete} />
+        <ActionNotes id={id} onDelete={onDelete} onArchived={onArchived} isArchived={isArchived} />
       </div>
     </>
   );

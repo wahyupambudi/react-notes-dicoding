@@ -1,6 +1,6 @@
 import React from "react";
 
-function ActionNotes({ id, onDelete, onArchive }) {
+function ActionNotes({ id, onDelete, onArchived, isArchived }) {
   return (
     <>
       <div className="note-item__action">
@@ -12,9 +12,10 @@ function ActionNotes({ id, onDelete, onArchive }) {
         </button>
         <button
           className="note-item__archive-button"
-          onClick={() => onArchive(id)}
+          onClick={() => onArchived(id)}
         >
-          Arsipkan
+          {isArchived ? "Pindahkan" : "Arsipkan"}
+          {console.log(isArchived)}
         </button>
       </div>
     </>

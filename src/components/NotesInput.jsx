@@ -8,16 +8,16 @@ class NotesInput extends React.Component {
       title: "",
       body: "",
       createdAt: new Date().toISOString(),
+      limitTitle: 50,
     };
 
-    this.limitTitle = 50;
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onBodyChange = this.onBodyChange.bind(this);
     this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
   }
 
   onTitleChange(event) {
-    if (event.target.value.length > 50) {
+    if (event.target.value.length > this.state.limitTitle) {
       event.target.value = event.target.value.slice(0, 50);
     }
     this.setState(() => {
@@ -52,7 +52,7 @@ class NotesInput extends React.Component {
           <h2>Buat Catatan</h2>
           <form action="" onSubmit={this.onSubmitEventHandler}>
             <p className="note-input__title__char-limit">
-              Sisa karakter : {this.limitTitle - this.state.title.length}
+              Sisa karakter : {this.state.limitTitle - this.state.title.length}
             </p>
             <input
               className="note-input__title"
