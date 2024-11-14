@@ -1,8 +1,8 @@
 import React from "react";
 import { getInitialData } from "../utils/index";
-import NotesHeader from "./header/NotesHeader";
-import NotesInput from "./NotesInput";
-import NotesList from "./NotesList";
+import NotesNav from "./header/NotesNav";
+import NotesInput from "./notes/NotesInput";
+import NotesList from "./notes/NotesList";
 import NoteMessage from "./message/NoteMessage";
 import NotesSearch from "./header/NotesSearch";
 
@@ -72,7 +72,7 @@ class NotesApp extends React.Component {
     return (
       <>
         <div className="note-app__header">
-          <NotesHeader />
+          <NotesNav />
           <NotesSearch onSearch={this.onSearchHandler} />
         </div>
         <div className="note-app__body">

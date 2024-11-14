@@ -1,7 +1,7 @@
 import React from "react";
 import NotesItemBody from "./NotesItemBody";
-import { showFormattedDate } from "../utils";
-import ActionNotes from "./button/ActionNotes";
+import { showFormattedDate } from "../../utils";
+import ActionNotes from "../button/ActionNotes";
 
 function NotesItem({ id, title, body, createdAt, onDelete, onArchived, isArchived }) {
   return (
