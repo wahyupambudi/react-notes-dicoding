@@ -17,6 +17,9 @@ class NotesInput extends React.Component {
   }
 
   onTitleChange(event) {
+    if (event.target.value.length > 50) {
+      event.target.value = event.target.value.slice(0, 50);
+    }
     this.setState(() => {
       return {
         title: event.target.value,
@@ -58,7 +61,6 @@ class NotesInput extends React.Component {
               required
               value={this.state.title}
               onChange={this.onTitleChange}
-              maxLength={50}
             />
             <textarea
               className="note-input__body"
