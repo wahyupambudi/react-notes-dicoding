@@ -4,6 +4,7 @@ import NotesHeader from "./header/NotesHeader";
 import NotesInput from "./NotesInput";
 import NotesList from "./NotesList";
 import NoteMessage from "./message/NoteMessage";
+import NotesSearch from "./header/NotesSearch";
 
 class NotesApp extends React.Component {
   constructor(props) {
@@ -11,11 +12,13 @@ class NotesApp extends React.Component {
 
     this.state = {
       notes: getInitialData(),
+      search: "",
     };
 
     this.onAddNotesHandler = this.onAddNotesHandler.bind(this);
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
     this.onArchivedHandler = this.onArchivedHandler.bind(this);
+    this.onSearchHandler = this.onSearchHandler.bind(this);
   }
 
   onDeleteHandler(id) {
@@ -47,17 +50,31 @@ class NotesApp extends React.Component {
     });
   }
 
+  onSearchHandler(title) {
+    this.setState(() => {
+      return {
+        search: title,
+      };
+    });
+  }
+
   render() {
-    const activeNotes = this.state.notes.filter((note) => {
+    const notes = this.state.notes.filter((note) =>
+      note.title.toLowerCase().includes(this.state.search.toLowerCase())
+    );
+    const activeNotes = notes.filter((note) => {
       return note.archived === false;
     });
-    const archivedNotes = this.state.notes.filter((note) => {
+    const archivedNotes = notes.filter((note) => {
       return note.archived === true;
     });
 
     return (
       <>
-        <NotesHeader />
+        <div className="note-app__header">
+          <NotesHeader />
+          <NotesSearch onSearch={this.onSearchHandler} />
+        </div>
         <div className="note-app__body">
           <NotesInput addNotes={this.onAddNotesHandler} />
           <h2>Catatan Aktif</h2>

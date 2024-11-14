@@ -15,7 +15,6 @@ function ActionNotes({ id, onDelete, onArchived, isArchived }) {
           onClick={() => onArchived(id)}
         >
           {isArchived ? "Pindahkan" : "Arsipkan"}
-          {console.log(isArchived)}
         </button>
       </div>
     </>
